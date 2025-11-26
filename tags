@@ -4,13 +4,16 @@
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
 !_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/harry/vim-config/	//
+!_TAG_PROC_CWD	/home/haryy/vim-config/	//
 !_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
+<C-l>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
 <C-n>	vimrc_comfortable_v1.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
 <C-n>	vimrc_comfortable_v2.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
+<C-s>	vimrc_comfortable_v2.vim	/^inoremap <silent> <C-s> <C-o>:w<CR>$/;"	m
+<C-s>	vimrc_comfortable_v2.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
 <S-TAB>	vimrc_comfortable_v1.vim	/^inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"$/;"	m
 <S-TAB>	vimrc_comfortable_v2.vim	/^inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"$/;"	m
 <TAB>	vimrc_comfortable_v1.vim	/^inoremap <silent><expr> <TAB>$/;"	m
@@ -19,18 +22,17 @@
 <cr>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>"$/;"	m
 <leader>/	vimrc_comfortable_v2.vim	/^nmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
 <leader>/	vimrc_comfortable_v2.vim	/^xmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
+<leader><space>	vimrc_comfortable_v2.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^nmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^xmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
-<leader>a	vimrc_comfortable_v2.vim	/^nmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
-<leader>a	vimrc_comfortable_v2.vim	/^xmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>c<space>	vimrc_comfortable_v2.vim	/^nmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
 <leader>c<space>	vimrc_comfortable_v2.vim	/^xmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
 <leader>f	vimrc_comfortable_v1.vim	/^nmap <leader>f :Format<CR>$/;"	m
-<leader>f	vimrc_comfortable_v2.vim	/^nmap <leader>f :Format<CR>$/;"	m
+<leader>q	vimrc_comfortable_v2.vim	/^nnoremap <leader>q :q<CR>$/;"	m
 <leader>rn	vimrc_comfortable_v1.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
-<leader>rn	vimrc_comfortable_v2.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
+<leader>wq	vimrc_comfortable_v2.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
+CocGroup	vimrc_comfortable_v2.vim	/^augroup CocGroup$/;"	a
 Format	vimrc_comfortable_v1.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
-Format	vimrc_comfortable_v2.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
 K	vimrc_comfortable_v1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_comfortable_v2.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 NERDTreeQuitOnOpen	vimrc_comfortable_v1.vim	/^let NERDTreeQuitOnOpen=1      " 打开文件后自动关闭$/;"	v
@@ -40,9 +42,8 @@ NERDTreeShowHidden	vimrc_comfortable_v2.vim	/^let NERDTreeShowHidden=1      " �
 NoAutoComment	vimrc_comfortable_v1.vim	/^augroup NoAutoComment$/;"	a
 NoAutoComment	vimrc_comfortable_v2.vim	/^augroup NoAutoComment$/;"	a
 [d	vimrc_comfortable_v1.vim	/^nmap <silent> [d <Plug>(coc-diagnostic-prev)$/;"	m
-[d	vimrc_comfortable_v2.vim	/^nmap <silent> [d <Plug>(coc-diagnostic-prev)$/;"	m
 ]d	vimrc_comfortable_v1.vim	/^nmap <silent> ]d <Plug>(coc-diagnostic-next)$/;"	m
-]d	vimrc_comfortable_v2.vim	/^nmap <silent> ]d <Plug>(coc-diagnostic-next)$/;"	m
+c_cpp_completion	vimrc_comfortable_v2.vim	/^augroup c_cpp_completion$/;"	a
 c_cpp_settings	vimrc_comfortable_v1.vim	/^augroup c_cpp_settings$/;"	a
 c_cpp_settings	vimrc_comfortable_v2.vim	/^augroup c_cpp_settings$/;"	a
 g:NERDCommentEmptyLines	vimrc_comfortable_v2.vim	/^let g:NERDCommentEmptyLines = 1      " 注释空行$/;"	v
@@ -72,6 +73,6 @@ gr	vimrc_comfortable_v2.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
 gy	vimrc_comfortable_v1.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 gy	vimrc_comfortable_v2.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 s:check_back_space	vimrc_comfortable_v1.vim	/^function! s:check_back_space() abort$/;"	f
-s:check_back_space	vimrc_comfortable_v2.vim	/^function! s:check_back_space() abort$/;"	f
+s:check_coc_status	vimrc_comfortable_v2.vim	/^function! s:check_coc_status()$/;"	f
 s:show_documentation	vimrc_comfortable_v1.vim	/^function! s:show_documentation()$/;"	f
 s:show_documentation	vimrc_comfortable_v2.vim	/^function! s:show_documentation()$/;"	f
