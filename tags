@@ -10,69 +10,114 @@
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
 <C-l>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
+<C-l>	vimrc_v3.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
 <C-n>	vimrc_comfortable_v1.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
 <C-n>	vimrc_comfortable_v2.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
+<C-n>	vimrc_v3.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
 <C-s>	vimrc_comfortable_v2.vim	/^inoremap <silent> <C-s> <C-o>:w<CR>$/;"	m
 <C-s>	vimrc_comfortable_v2.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
+<C-s>	vimrc_v3.vim	/^inoremap <silent> <C-s> <C-o>:w<CR>$/;"	m
+<C-s>	vimrc_v3.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
 <S-TAB>	vimrc_comfortable_v1.vim	/^inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"$/;"	m
 <S-TAB>	vimrc_comfortable_v2.vim	/^inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"$/;"	m
+<S-TAB>	vimrc_v3.vim	/^inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\\<C-h>"$/;"	m
 <TAB>	vimrc_comfortable_v1.vim	/^inoremap <silent><expr> <TAB>$/;"	m
 <TAB>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<TAB>	vimrc_v3.vim	/^inoremap <silent><expr> <TAB>$/;"	m
 <cr>	vimrc_comfortable_v1.vim	/^inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>"$/;"	m
 <cr>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>"$/;"	m
+<cr>	vimrc_v3.vim	/^inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\\<C-g>u\\<CR>"$/;"	m
 <leader>/	vimrc_comfortable_v2.vim	/^nmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
 <leader>/	vimrc_comfortable_v2.vim	/^xmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
+<leader>/	vimrc_v3.vim	/^nmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
+<leader>/	vimrc_v3.vim	/^xmap <leader>\/ <plug>NERDCommenterToggle$/;"	m
 <leader><space>	vimrc_comfortable_v2.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
+<leader><space>	vimrc_v3.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^nmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^xmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>c<space>	vimrc_comfortable_v2.vim	/^nmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
 <leader>c<space>	vimrc_comfortable_v2.vim	/^xmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
+<leader>c<space>	vimrc_v3.vim	/^nmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
+<leader>c<space>	vimrc_v3.vim	/^xmap <leader>c<space> <plug>NERDCommenterToggle$/;"	m
 <leader>f	vimrc_comfortable_v1.vim	/^nmap <leader>f :Format<CR>$/;"	m
 <leader>q	vimrc_comfortable_v2.vim	/^nnoremap <leader>q :q<CR>$/;"	m
+<leader>q	vimrc_v3.vim	/^nnoremap <leader>q :q<CR>$/;"	m
 <leader>rn	vimrc_comfortable_v1.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
 <leader>wq	vimrc_comfortable_v2.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
+<leader>wq	vimrc_v3.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
 CocGroup	vimrc_comfortable_v2.vim	/^augroup CocGroup$/;"	a
+CocGroup	vimrc_v3.vim	/^augroup CocGroup$/;"	a
 Format	vimrc_comfortable_v1.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
 K	vimrc_comfortable_v1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_comfortable_v2.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
+K	vimrc_v3.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 NERDTreeQuitOnOpen	vimrc_comfortable_v1.vim	/^let NERDTreeQuitOnOpen=1      " 打开文件后自动关闭$/;"	v
 NERDTreeQuitOnOpen	vimrc_comfortable_v2.vim	/^let NERDTreeQuitOnOpen=1      " 打开文件后自动关闭$/;"	v
+NERDTreeQuitOnOpen	vimrc_v3.vim	/^let NERDTreeQuitOnOpen=1      " 打开文件后自动关闭$/;"	v
 NERDTreeShowHidden	vimrc_comfortable_v1.vim	/^let NERDTreeShowHidden=1      " 显示隐藏文件$/;"	v
 NERDTreeShowHidden	vimrc_comfortable_v2.vim	/^let NERDTreeShowHidden=1      " 显示隐藏文件$/;"	v
+NERDTreeShowHidden	vimrc_v3.vim	/^let NERDTreeShowHidden=1      " 显示隐藏文件$/;"	v
 NoAutoComment	vimrc_comfortable_v1.vim	/^augroup NoAutoComment$/;"	a
 NoAutoComment	vimrc_comfortable_v2.vim	/^augroup NoAutoComment$/;"	a
+NoAutoComment	vimrc_v3.vim	/^augroup NoAutoComment$/;"	a
 [d	vimrc_comfortable_v1.vim	/^nmap <silent> [d <Plug>(coc-diagnostic-prev)$/;"	m
 ]d	vimrc_comfortable_v1.vim	/^nmap <silent> ]d <Plug>(coc-diagnostic-next)$/;"	m
 c_cpp_completion	vimrc_comfortable_v2.vim	/^augroup c_cpp_completion$/;"	a
+c_cpp_completion	vimrc_v3.vim	/^augroup c_cpp_completion$/;"	a
 c_cpp_settings	vimrc_comfortable_v1.vim	/^augroup c_cpp_settings$/;"	a
 c_cpp_settings	vimrc_comfortable_v2.vim	/^augroup c_cpp_settings$/;"	a
+c_cpp_settings	vimrc_v3.vim	/^augroup c_cpp_settings$/;"	a
 g:NERDCommentEmptyLines	vimrc_comfortable_v2.vim	/^let g:NERDCommentEmptyLines = 1      " 注释空行$/;"	v
+g:NERDCommentEmptyLines	vimrc_v3.vim	/^let g:NERDCommentEmptyLines = 1      " 注释空行$/;"	v
 g:NERDCompactSexyComs	vimrc_comfortable_v1.vim	/^let g:NERDCompactSexyComs=1   " 紧凑注释风格$/;"	v
 g:NERDCompactSexyComs	vimrc_comfortable_v2.vim	/^let g:NERDCompactSexyComs = 1        " 多行注释紧凑显示$/;"	v
+g:NERDCompactSexyComs	vimrc_v3.vim	/^let g:NERDCompactSexyComs = 1        " 多行注释紧凑显示$/;"	v
 g:NERDCustomDelimiters	vimrc_comfortable_v2.vim	/^let g:NERDCustomDelimiters = {$/;"	v
+g:NERDCustomDelimiters	vimrc_v3.vim	/^let g:NERDCustomDelimiters = {$/;"	v
 g:NERDDefaultAlign	vimrc_comfortable_v2.vim	/^let g:NERDDefaultAlign = 'left'      " 左对齐$/;"	v
+g:NERDDefaultAlign	vimrc_v3.vim	/^let g:NERDDefaultAlign = 'left'      " 左对齐$/;"	v
 g:NERDDisableAutoNesting	vimrc_comfortable_v1.vim	/^let g:NERDDisableAutoNesting=1 " 禁用自动嵌套注释$/;"	v
 g:NERDDisableAutoNesting	vimrc_comfortable_v2.vim	/^let g:NERDDisableAutoNesting = 1     " 禁用自动嵌套注释$/;"	v
+g:NERDDisableAutoNesting	vimrc_v3.vim	/^let g:NERDDisableAutoNesting = 1     " 禁用自动嵌套注释$/;"	v
 g:NERDSpaceDelims	vimrc_comfortable_v1.vim	/^let g:NERDSpaceDelims=1       " 注释后加空格：\/\/ comment$/;"	v
 g:NERDSpaceDelims	vimrc_comfortable_v2.vim	/^let g:NERDSpaceDelims = 1            " \/* 和 *\/ 周围加空格$/;"	v
+g:NERDSpaceDelims	vimrc_v3.vim	/^let g:NERDSpaceDelims = 1            " \/* 和 *\/ 周围加空格$/;"	v
 g:NERDToggleCheckAllLines	vimrc_comfortable_v2.vim	/^let g:NERDToggleCheckAllLines = 1    " 智能切换注释$/;"	v
+g:NERDToggleCheckAllLines	vimrc_v3.vim	/^let g:NERDToggleCheckAllLines = 1    " 智能切换注释$/;"	v
+g:UltiSnipsEnableSnipMate	vimrc_v3.vim	/^let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）$/;"	v
+g:UltiSnipsExpandTrigger	vimrc_v3.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
+g:UltiSnipsJumpBackwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
+g:UltiSnipsJumpForwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
+g:UltiSnipsListSnippets	vimrc_v3.vim	/^let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段$/;"	v
+g:UltiSnipsRemoveSelectModeMappings	vimrc_v3.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
+g:UltiSnipsSnippetDirectories	vimrc_v3.vim	/^let g:UltiSnipsSnippetDirectories = ['~\/.vim\/UltiSnips', 'UltiSnips']$/;"	v
 g:airline#extensions#tabline#enabled	vimrc_comfortable_v1.vim	/^let g:airline#extensions#tabline#enabled = 1  " 显示多标签页$/;"	v
 g:airline#extensions#tabline#enabled	vimrc_comfortable_v2.vim	/^let g:airline#extensions#tabline#enabled = 1  " 显示多标签页$/;"	v
+g:airline#extensions#tabline#enabled	vimrc_v3.vim	/^let g:airline#extensions#tabline#enabled = 1  " 显示多标签页$/;"	v
 g:airline_powerline_fonts	vimrc_comfortable_v1.vim	/^let g:airline_powerline_fonts = 0  " 设为 1 需 Powerline 字体$/;"	v
 g:airline_powerline_fonts	vimrc_comfortable_v2.vim	/^let g:airline_powerline_fonts = 0  " 设为 1 需 Powerline 字体$/;"	v
+g:airline_powerline_fonts	vimrc_v3.vim	/^let g:airline_powerline_fonts = 0  " 设为 1 需 Powerline 字体$/;"	v
 g:coc_global_extensions	vimrc_comfortable_v1.vim	/^let g:coc_global_extensions = [$/;"	v
 g:coc_global_extensions	vimrc_comfortable_v2.vim	/^let g:coc_global_extensions = [$/;"	v
+g:coc_global_extensions	vimrc_v3.vim	/^let g:coc_global_extensions = [$/;"	v
 g:gitgutter_sign_column_always	vimrc_comfortable_v1.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
 g:gitgutter_sign_column_always	vimrc_comfortable_v2.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
+g:gitgutter_sign_column_always	vimrc_v3.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
 gd	vimrc_comfortable_v1.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
 gd	vimrc_comfortable_v2.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
+gd	vimrc_v3.vim	/^nmap <silent> gd <Plug>(coc-definition)$/;"	m
 gi	vimrc_comfortable_v1.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
 gi	vimrc_comfortable_v2.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
+gi	vimrc_v3.vim	/^nmap <silent> gi <Plug>(coc-implementation)$/;"	m
 gr	vimrc_comfortable_v1.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
 gr	vimrc_comfortable_v2.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
+gr	vimrc_v3.vim	/^nmap <silent> gr <Plug>(coc-references)$/;"	m
 gy	vimrc_comfortable_v1.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 gy	vimrc_comfortable_v2.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
+gy	vimrc_v3.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 s:check_back_space	vimrc_comfortable_v1.vim	/^function! s:check_back_space() abort$/;"	f
 s:check_coc_status	vimrc_comfortable_v2.vim	/^function! s:check_coc_status()$/;"	f
+s:check_coc_status	vimrc_v3.vim	/^function! s:check_coc_status()$/;"	f
 s:show_documentation	vimrc_comfortable_v1.vim	/^function! s:show_documentation()$/;"	f
 s:show_documentation	vimrc_comfortable_v2.vim	/^function! s:show_documentation()$/;"	f
+s:show_documentation	vimrc_v3.vim	/^function! s:show_documentation()$/;"	f
