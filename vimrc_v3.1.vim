@@ -1,4 +1,3 @@
-
 " ============================================================================
 " Vim C 语言开发配置
 " 作者: Harry
@@ -239,7 +238,7 @@ let g:gitgutter_sign_column_always = 1  " 始终显示符号列
 let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Tab 展开
 let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符
 let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符
-let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段
+let g:UltiSnipsListSnippets = '<c-b>'            " 手动列出：Ctrl+b 显示所有可用片段
 
 " 🚫 禁用所有自动触发，确保完全手动控制
 let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）
