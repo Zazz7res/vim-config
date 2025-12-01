@@ -1,3 +1,4 @@
+
 " ============================================================================
 " Vim C 语言开发配置
 " 作者: Harry
@@ -218,7 +219,6 @@ nmap <leader>/ <plug>NERDCommenterToggle
 xmap <leader>/ <plug>NERDCommenterToggle
 nmap <leader>c<space> <plug>NERDCommenterToggle
 xmap <leader>c<space> <plug>NERDCommenterToggle
-
 " vim-airline 配置
 let g:airline_powerline_fonts = 0  " 设为 1 需 Powerline 字体
 let g:airline#extensions#tabline#enabled = 1  " 显示多标签页
@@ -262,6 +262,30 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-vimlsp'
       \ ]
+
+
+" ============================================================================
+" 补全菜单颜色优化 - 适配黑白黄背景
+" ============================================================================
+
+" 补全菜单颜色配置
+highlight Pmenu guibg=#2b2b2b guifg=#ffffff ctermbg=238 ctermfg=255
+highlight PmenuSel guibg=#005f87 guifg=#ffffff ctermbg=24 ctermfg=255
+highlight PmenuSbar guibg=#1c1c1c ctermbg=234
+highlight PmenuThumb guibg=#444444 ctermbg=240
+
+" Coc 浮动窗口颜色
+highlight CocFloating guibg=#2b2b2b ctermbg=238
+
+" 文档悬浮窗口颜色
+highlight CocHintFloat guibg=#1c1c1c ctermbg=234
+
+" 让补全菜单有更好的边框效果
+highlight CocMenuSel ctermbg=24 guibg=#005f87
+
+" 选中的补全项
+highlight CocSearch ctermfg=12 guifg=#18A3FF
+highlight CocCursorRange ctermbg=17 guibg=#264F78
 
 " ============================================================================
 " 代码补全快捷键 - 灵活可用的方案
