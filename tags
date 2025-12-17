@@ -34,8 +34,6 @@
 <C-s>	vimrc_v4.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
 <C-s>	vimrc_v5.vim	/^inoremap <silent> <C-s> <C-o>:w<CR>$/;"	m
 <C-s>	vimrc_v5.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
-<F10>	vimrc_v5.vim	/^nnoremap <F10> :call CompileAndRun()<CR>$/;"	m
-<F8>	vimrc_v5.vim	/^nnoremap <F8> :call GdbRun()<CR>$/;"	m
 <M-down>	vimrc_v5.vim	/^nnoremap <M-down> :resize +5<CR>$/;"	m
 <M-left>	vimrc_v5.vim	/^nnoremap <M-left> :vertical resize -5<CR>$/;"	m
 <M-right>	vimrc_v5.vim	/^nnoremap <M-right> :vertical resize +5<CR>$/;"	m
@@ -109,7 +107,6 @@
 <leader>qf	vimrc_v5.vim	/^nmap <leader>qf <Plug>(coc-fix-current)$/;"	m
 <leader>rn	vimrc_comfortable_v1.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
 <leader>rn	vimrc_v5.vim	/^nmap <leader>rn <Plug>(coc-rename)$/;"	m
-<leader>t	vimrc_v5.vim	/^    nnoremap <leader>t :terminal<CR>i$/;"	m
 <leader>wq	vimrc_comfortable_v2.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
 <leader>wq	vimrc_v3.1.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
 <leader>wq	vimrc_v3.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
@@ -124,7 +121,6 @@ CocGroup	vimrc_v3.1.vim	/^augroup CocGroup$/;"	a
 CocGroup	vimrc_v3.vim	/^augroup CocGroup$/;"	a
 CocGroup	vimrc_v4.vim	/^augroup CocGroup$/;"	a
 CocGroup	vimrc_v5.vim	/^augroup CocGroup$/;"	a
-CompileAndRun	vimrc_v5.vim	/^function! CompileAndRun()$/;"	f
 CountLines	vimrc_v5.vim	/^command! CountLines call CountLines()$/;"	c
 CountLines	vimrc_v5.vim	/^function! CountLines()$/;"	f
 DeleteSwap	vimrc_v3.1.vim	/^command! DeleteSwap call DeleteSwapFile()$/;"	c
@@ -135,7 +131,6 @@ DeleteSwapFile	vimrc_v4.vim	/^function! DeleteSwapFile()$/;"	f
 DeleteSwapFile	vimrc_v5.vim	/^function! DeleteSwapFile()$/;"	f
 FileInfo	vimrc_v5.vim	/^command! FileInfo echo expand('%:p') . ' (' . &filetype . ')'$/;"	c
 Format	vimrc_comfortable_v1.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
-GdbRun	vimrc_v5.vim	/^function! GdbRun()$/;"	f
 K	vimrc_comfortable_v1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_comfortable_v2.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_v3.1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
@@ -223,27 +218,27 @@ g:UltiSnipsEditSplit	vimrc_v4.vim	/^let g:UltiSnipsEditSplit = 'vertical'       
 g:UltiSnipsEnableSnipMate	vimrc_v3.1.vim	/^let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）$/;"	v
 g:UltiSnipsEnableSnipMate	vimrc_v3.vim	/^let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）$/;"	v
 g:UltiSnipsEnableSnipMate	vimrc_v4.vim	/^let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）$/;"	v
-g:UltiSnipsEnableSnipMate	vimrc_v5.vim	/^let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）$/;"	v
+g:UltiSnipsEnableSnipMate	vimrc_v5.vim	/^let g:UltiSnipsEnableSnipMate = 0              " 禁用 SnipMate 兼容$/;"	v
 g:UltiSnipsExpandTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
 g:UltiSnipsExpandTrigger	vimrc_v3.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
 g:UltiSnipsExpandTrigger	vimrc_v4.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
-g:UltiSnipsExpandTrigger	vimrc_v5.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
+g:UltiSnipsExpandTrigger	vimrc_v5.vim	/^let g:UltiSnipsExpandTrigger = '<c-j>'         " Ctrl+J 展开片段$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v4.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
-g:UltiSnipsJumpBackwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
+g:UltiSnipsJumpBackwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'   " Ctrl+K 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v4.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
-g:UltiSnipsJumpForwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
+g:UltiSnipsJumpForwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'    " Ctrl+J 跳到下一个占位符$/;"	v
 g:UltiSnipsListSnippets	vimrc_v3.1.vim	/^let g:UltiSnipsListSnippets = '<c-b>'            " 手动列出：Ctrl+b 显示所有可用片段$/;"	v
 g:UltiSnipsListSnippets	vimrc_v3.vim	/^let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段$/;"	v
 g:UltiSnipsListSnippets	vimrc_v4.vim	/^let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段$/;"	v
-g:UltiSnipsListSnippets	vimrc_v5.vim	/^let g:UltiSnipsListSnippets = '<c-b>'            " 手动列出：Ctrl+b 显示所有可用片段$/;"	v
+g:UltiSnipsListSnippets	vimrc_v5.vim	/^let g:UltiSnipsListSnippets = '<c-l>'          " Ctrl+L 列出所有片段$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v3.1.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v3.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v4.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
-g:UltiSnipsRemoveSelectModeMappings	vimrc_v5.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
+g:UltiSnipsRemoveSelectModeMappings	vimrc_v5.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0    " 保持完全手动控制$/;"	v
 g:UltiSnipsSnippetDirectories	vimrc_v3.1.vim	/^let g:UltiSnipsSnippetDirectories = ['~\/.vim\/UltiSnips', 'UltiSnips']$/;"	v
 g:UltiSnipsSnippetDirectories	vimrc_v3.vim	/^let g:UltiSnipsSnippetDirectories = ['~\/.vim\/UltiSnips', 'UltiSnips']$/;"	v
 g:UltiSnipsSnippetDirectories	vimrc_v4.vim	/^let g:UltiSnipsSnippetDirectories = ['~\/.vim\/UltiSnips', 'UltiSnips']$/;"	v

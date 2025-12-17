@@ -59,7 +59,11 @@ set lazyredraw                " 延迟重绘，提升宏和脚本执行性能
 set history=500               " 历史命令记录数量
 set maxmempattern=2000        " 最大内存模式匹配大小
 set synmaxcol=200             " 限制语法高亮扫描列数
-
+"  2025年12月17日  21：53
+"
+"
+"
+"
 " [低配可选] 24位真彩色在某些终端可能不兼容，若颜色异常请注释
 " set termguicolors
 
@@ -73,17 +77,6 @@ augroup c_cpp_settings
     autocmd FileType c,cpp,h,hpp setlocal nosmartindent
     " 缩进设置
     autocmd FileType c,cpp,h,hpp setlocal tabstop=4 shiftwidth=4 expandtab
-    " 编译设置
-    autocmd FileType c,cpp,h,hpp setlocal makeprg=gcc\ -Wall\ -Wextra\ -g\ -o\ %<\ %
-    autocmd FileType c,cpp setlocal errorformat=%f:%l:%c:\ %t%*[^:]:\ %m
-    
-    " 快速编译运行快捷键
-    autocmd FileType c,cpp nnoremap <buffer> <F5> :w<CR>:make<CR>
-    autocmd FileType c,cpp nnoremap <buffer> <F6> :!./%< <CR>
-    autocmd FileType c,cpp nnoremap <buffer> <F9> :w<CR>:!gcc -Wall -Wextra -g -o %< % && ./%< <CR>
-    
-    " 头文件快速切换
-    autocmd FileType c,cpp,h,hpp nnoremap <buffer> <leader>hh :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
     
     " 代码格式化（需要安装 clang-format）
     autocmd FileType c,cpp,h,hpp nnoremap <buffer> <leader>cf :ClangFormat<CR>
@@ -281,15 +274,13 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 " ============================================================================
 
 " 🎯 智能触发方案：结合手动和自动触发
-let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Tab 展开
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符
-let g:UltiSnipsListSnippets = '<c-b>'            " 手动列出：Ctrl+b 显示所有可用片段
+let g:UltiSnipsExpandTrigger = '<c-j>'         " Ctrl+J 展开片段
+let g:UltiSnipsJumpForwardTrigger = '<c-j>'    " Ctrl+J 跳到下一个占位符
+let g:UltiSnipsJumpBackwardTrigger = '<c-k>'   " Ctrl+K 跳回上一个占位符
+let g:UltiSnipsListSnippets = '<c-l>'          " Ctrl+L 列出所有片段
 
-" 🚫 禁用所有自动触发，确保完全手动控制
-let g:UltiSnipsEnableSnipMate = 0                " 禁用 SnipMate 兼容（避免自动触发）
-let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制
-
+let g:UltiSnipsEnableSnipMate = 0              " 禁用 SnipMate 兼容
+let g:UltiSnipsRemoveSelectModeMappings = 0    " 保持完全手动控制
 " UltiSnips 目录设置
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
@@ -314,8 +305,6 @@ let g:coc_global_extensions = [
 " ============================================================================
 
 " 补全菜单颜色配置
-highlight Pmenu guibg=#2b2b2b guifg=#ffffff ctermbg=238 ctermfg=255
-highlight PmenuSel guibg=#005f87 guifg=#ffffff ctermbg=24 ctermfg=255
 highlight PmenuSbar guibg=#1c1c1c ctermbg=234
 highlight PmenuThumb guibg=#444444 ctermbg=240
 
@@ -423,39 +412,7 @@ nnoremap <M-up> :resize -5<CR>
 nnoremap <M-down> :resize +5<CR>
 
 " ============================================================================
-" 15. 调试支持配置
-" ============================================================================
-
-" 简单的 GDB 集成
-function! GdbRun()
-    let l:exe = expand('%:r')
-    if executable(l:exe)
-        execute '!gdb --args ' . l:exe
-    else
-        echo "Executable not found. Compile first with <F5>"
-    endif
-endfunction
-
-function! CompileAndRun()
-    write
-    if &filetype == 'c'
-        terminal gcc -Wall -Wextra -g -o %:r % && ./%:r
-    elseif &filetype == 'cpp'
-        terminal g++ -Wall -Wextra -g -o %:r % && ./%:r
-    endif
-endfunction
-
-nnoremap <F8> :call GdbRun()<CR>
-nnoremap <F10> :call CompileAndRun()<CR>
-
-" 终端支持
-if has('terminal')
-    nnoremap <leader>t :terminal<CR>i
-    tnoremap <Esc> <C-\><C-n>
-endif
-
-" ============================================================================
-" 16. 项目管理功能
+" 15. 项目管理功能
 " ============================================================================
 
 let g:project_root = {}
@@ -564,12 +521,19 @@ command! FileInfo echo expand('%:p') . ' (' . &filetype . ')'
 " 启动时检查并设置项目根目录
 autocmd VimEnter * if argc() > 0 | call SetProjectRoot() | endif
 
-" 自动安装 vim-plug
+" ============================================================================
+" 自动安装 vim-plug（如果不存在）
 if empty(glob('~/.vim/autoload/plug.vim'))
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    echo "Installing vim-plug and plugins..."
+    autocmd VimEnter * PlugInstall --sync | quit
 endif
+
+" 自动安装缺少的插件
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+  \| endif
 
 " ============================================================================
 " 配置结束
