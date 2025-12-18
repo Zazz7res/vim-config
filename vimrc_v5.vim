@@ -2,7 +2,8 @@
 " Vim C 语言开发配置
 " 作者: Harry
 " 目标: 稳定、高效、兼容、低配友好
-" 版本: 2.0 - 完整增强版
+" 版本: 2.2 - 优化修复版
+" 更新: 解决重复配置、优化大文件处理、增强错误检查
 " ============================================================================
 
 " ----------------------------
@@ -12,16 +13,7 @@ set nocompatible              " 关闭 Vi 兼容模式，启用 Vim 现代特性
 filetype off                  " 在加载插件前关闭文件类型检测
 
 " ----------------------------
-" 2. 强制禁用自动注释 - 核心修复
-" ----------------------------
-augroup NoAutoComment
-    autocmd!
-    " 针对所有文件类型禁用自动注释
-    autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=q formatoptions-=l
-augroup END
-
-" ----------------------------
-" 3. 通用编辑体验优化
+" 2. 通用编辑体验优化
 " ----------------------------
 set number                    " 显示绝对行号
 " [低配可选] 相对行号在滚动大文件时可能卡顿，低配机器建议注释掉
@@ -59,16 +51,12 @@ set lazyredraw                " 延迟重绘，提升宏和脚本执行性能
 set history=500               " 历史命令记录数量
 set maxmempattern=2000        " 最大内存模式匹配大小
 set synmaxcol=200             " 限制语法高亮扫描列数
-"  2025年12月17日  21：53
-"
-"
-"
-"
+
 " [低配可选] 24位真彩色在某些终端可能不兼容，若颜色异常请注释
 " set termguicolors
 
 " ----------------------------
-" 4. C 语言专项配置
+" 3. C 语言专项配置（已合并自动注释设置）
 " ----------------------------
 augroup c_cpp_settings
     autocmd!
@@ -77,10 +65,14 @@ augroup c_cpp_settings
     autocmd FileType c,cpp,h,hpp setlocal nosmartindent
     " 缩进设置
     autocmd FileType c,cpp,h,hpp setlocal tabstop=4 shiftwidth=4 expandtab
-    
-    " 代码格式化（需要安装 clang-format）
-    autocmd FileType c,cpp,h,hpp nnoremap <buffer> <leader>cf :ClangFormat<CR>
-    autocmd FileType c,cpp,h,hpp vnoremap <buffer> <leader>cf :ClangFormat<CR>
+augroup END
+
+" 其他文件类型的自动注释禁用
+augroup other_file_types
+    autocmd!
+    autocmd FileType * if index(['c', 'cpp', 'h', 'hpp'], &ft) < 0
+        \ | setlocal formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=q formatoptions-=l
+        \ | endif
 augroup END
 
 autocmd QuickFixCmdPost * nested cwindow
@@ -91,7 +83,7 @@ set suffixesadd=.c,.h,.cpp,.hpp
 set tags=./tags;,tags
 
 " ----------------------------
-" 5. 增强的交换文件管理
+" 4. 增强的交换文件管理
 " ----------------------------
 
 " 1. 修复目录创建（修正路径）
@@ -144,7 +136,7 @@ function! DeleteSwapFile()
     let swapfile = '~/.vim/swap/' . swapfile . '.swp'
     if filereadable(expand(swapfile))
         call delete(expand(swapfile))
-        echo "Deleted swap file: " . swapfile
+        echo "Deleted swap file: " . swap_file
     else
         echo "No swap file found for current buffer"
     endif
@@ -154,13 +146,15 @@ command! DeleteSwap call DeleteSwapFile()
 nnoremap <leader>ds :DeleteSwap<CR>
 
 " ----------------------------
-" 6. 性能优化 - 大文件处理
+" 5. 优化的大文件处理（调整为5MB）
 " ----------------------------
+let g:large_file_threshold = 5000000 " 5MB
+
 augroup large_file
     autocmd!
-    " 超过 1MB 的文件禁用部分功能
-    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > 1000000 || f == -2 | set eventignore+=FileType | endif
-    autocmd BufReadPost * if getfsize(expand("<afile>")) > 1000000 | syntax off | setlocal nocursorline nocursorcolumn | endif
+    " 超过 5MB 的文件禁用部分功能
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:large_file_threshold || f == -2 | set eventignore+=FileType | endif
+    autocmd BufReadPost * if getfsize(expand("<afile>")) > g:large_file_threshold | syntax off | setlocal nocursorline nocursorcolumn | endif
 augroup END
 
 " [低配可选] 光标行/列高亮是性能大户，低配机器建议关闭
@@ -168,7 +162,7 @@ set nocursorline
 set nocursorcolumn
 
 " ============================================================================
-" 7. 插件管理 (使用 vim-plug)
+" 6. 插件管理 (使用 vim-plug)
 " ============================================================================
 call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
 
@@ -224,7 +218,7 @@ call plug#end()
 filetype plugin indent on
 
 " ============================================================================
-" 8. 插件个性化配置
+" 7. 插件个性化配置
 " ============================================================================
 
 " NERDTree 配置
@@ -270,14 +264,14 @@ let g:clang_format#auto_format = 0  " 不自动格式化，手动触发
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}
 
 " ============================================================================
-" 9. UltiSnips 配置 - 智能混合触发方案
+" 8. UltiSnips 配置 - 使用Tab键方案
 " ============================================================================
 
-" 🎯 智能触发方案：结合手动和自动触发
-let g:UltiSnipsExpandTrigger = '<c-j>'         " Ctrl+J 展开片段
-let g:UltiSnipsJumpForwardTrigger = '<c-j>'    " Ctrl+J 跳到下一个占位符
-let g:UltiSnipsJumpBackwardTrigger = '<c-k>'   " Ctrl+K 跳回上一个占位符
-let g:UltiSnipsListSnippets = '<c-l>'          " Ctrl+L 列出所有片段
+" 🎯 使用Tab键方案：更符合现代编辑器习惯
+let g:UltiSnipsExpandTrigger = '<Tab>'         " Tab 展开片段
+let g:UltiSnipsJumpForwardTrigger = '<Tab>'    " Tab 跳到下一个占位符
+let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>' " Shift+Tab 跳回上一个占位符
+let g:UltiSnipsListSnippets = '<C-l>'          " Ctrl+L 列出所有片段
 
 let g:UltiSnipsEnableSnipMate = 0              " 禁用 SnipMate 兼容
 let g:UltiSnipsRemoveSelectModeMappings = 0    " 保持完全手动控制
@@ -285,23 +279,23 @@ let g:UltiSnipsRemoveSelectModeMappings = 0    " 保持完全手动控制
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
 " ============================================================================
-" 10. Coc.nvim 配置 - 主流稳定方案
+" 9. Coc.nvim 配置 - 移除coc-snippets
 " ============================================================================
 
 " 基础补全设置
 set completeopt=menu,menuone,noselect
 set shortmess+=c
 
-" Coc 扩展配置 - 明确使用 clangd
+" Coc 扩展配置 - 移除coc-snippets，专注UltiSnips
 let g:coc_global_extensions = [
       \ 'coc-clangd',
       \ 'coc-json',
       \ 'coc-vimlsp',
-      \ 'coc-snippets'
+      \ 'coc-marketplace'
       \ ]
 
 " ============================================================================
-" 11. 补全菜单颜色优化 - 适配黑白黄背景
+" 10. 补全菜单颜色优化 - 适配黑白黄背景
 " ============================================================================
 
 " 补全菜单颜色配置
@@ -322,10 +316,10 @@ highlight CocSearch ctermfg=12 guifg=#18A3FF
 highlight CocCursorRange ctermbg=17 guibg=#264F78
 
 " ============================================================================
-" 12. 智能 Tab 补全方案 - 解决键位冲突
+" 11. 智能 Tab 行为 - 解决UltiSnips与Coc冲突
 " ============================================================================
 
-" 🎯 智能 Tab 行为：自动判断当前上下文
+" 🎯 智能 Tab 行为：Coc补全优先，UltiSnips次之
 function! CheckBackSpace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -333,6 +327,8 @@ endfunction
 
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1) :
+      \ pumvisible() ? "\<C-n>" :
+      \ UltiSnips#CanExpandSnippet() ? "\<C-r>=UltiSnips#ExpandSnippet()\<CR>" :
       \ CheckBackSpace() ? "\<Tab>" :
       \ coc#refresh()
 
@@ -345,7 +341,7 @@ inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<C
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " ============================================================================
-" 13. 代码导航和操作快捷键
+" 12. 代码导航和操作快捷键
 " ============================================================================
 
 " 跳转到定义
@@ -371,10 +367,6 @@ endfunction
 " 重命名符号
 nmap <leader>rn <Plug>(coc-rename)
 
-" 格式化代码
-nmap <leader>f <Plug>(coc-format-selected)
-xmap <leader>f <Plug>(coc-format-selected)
-
 " 代码操作
 nmap <leader>ca <Plug>(coc-codeaction)
 xmap <leader>ca <Plug>(coc-codeaction)
@@ -384,7 +376,7 @@ nmap <leader>cl <Plug>(coc-codelens-action)
 nmap <leader>qf <Plug>(coc-fix-current)
 
 " ============================================================================
-" 14. 其他实用快捷键
+" 13. 其他实用快捷键
 " ============================================================================
 
 " 清除搜索高亮
@@ -399,11 +391,11 @@ nnoremap <leader>q :q<CR>
 nnoremap <leader>wq :wq<CR>
 nnoremap <leader>qa :qa<CR>
 
-" 窗口导航
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+" 窗口导航 - 使用Alt键避免与UltiSnips冲突
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 
 " 调整窗口大小
 nnoremap <M-left> :vertical resize -5<CR>
@@ -412,7 +404,7 @@ nnoremap <M-up> :resize -5<CR>
 nnoremap <M-down> :resize +5<CR>
 
 " ============================================================================
-" 15. 项目管理功能
+" 14. 项目管理功能
 " ============================================================================
 
 let g:project_root = {}
@@ -432,7 +424,37 @@ nnoremap <leader>pr :call SetProjectRoot()<CR>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " ============================================================================
-" 17. 错误处理和 Quickfix 管理
+" 15. 智能格式化 - 统一格式化方案
+" ============================================================================
+
+" 智能格式化函数：C语言使用clang-format，其他使用coc-format
+function! SmartFormat()
+  if &filetype =~ '^c\|cpp\|h\|hpp'
+    " C系列使用clang-format
+    if executable('clang-format')
+      ClangFormat
+    else
+      CocAction('format')
+    endif
+  else
+    " 其他文件使用coc-format
+    CocAction('format')
+  endif
+endfunction
+
+" 统一使用<leader>=进行格式化（VSCode风格）
+nmap <leader>= :call SmartFormat()<CR>
+xmap <leader>= :call SmartFormat()<CR>
+
+" 保留<leader>cf作为C语言专用格式化（兼容旧配置）
+augroup c_formatting
+  autocmd!
+  autocmd FileType c,cpp,h,hpp nnoremap <buffer> <leader>cf :ClangFormat<CR>
+  autocmd FileType c,cpp,h,hpp vnoremap <buffer> <leader>cf :ClangFormat<CR>
+augroup END
+
+" ============================================================================
+" 16. 错误处理和 Quickfix 管理
 " ============================================================================
 
 function! QuickfixToggle()
@@ -450,7 +472,7 @@ nnoremap ]Q :clast<CR>
 nnoremap [Q :cfirst<CR>
 
 " ============================================================================
-" 18. 代码统计功能
+" 17. 代码统计功能
 " ============================================================================
 
 function! CountLines()
@@ -478,7 +500,7 @@ endfunction
 command! CountLines call CountLines()
 
 " ============================================================================
-" 19. 文件类型特定优化
+" 18. 文件类型特定优化
 " ============================================================================
 
 " C/C++ 文件头文件自动包含提示
@@ -490,7 +512,7 @@ augroup c_cpp_completion
 augroup END
 
 " ============================================================================
-" 20. 检查 Coc 状态
+" 19. 检查 Coc 状态
 " ============================================================================
 
 augroup CocGroup
@@ -505,7 +527,77 @@ function! s:check_coc_status()
 endfunction
 
 " ============================================================================
-" 21. 自定义命令
+" 20. 增强的错误处理 - 添加缺失工具检查
+" ============================================================================
+
+" 添加缺失插件的友好提示
+function! CheckRequiredTools()
+    let missing_tools = []
+    
+    if !executable('ctags')
+        call add(missing_tools, 'ctags (for gutentags)')
+    endif
+    
+    if !executable('clangd')
+        call add(missing_tools, 'clangd (for coc-clangd)')
+    endif
+    
+    if !executable('clang-format')
+        call add(missing_tools, 'clang-format (for formatting)')
+    endif
+    
+    if len(missing_tools) > 0
+        echohl WarningMsg
+        echo "建议安装以下工具："
+        for tool in missing_tools
+            echo "  • " . tool
+        endfor
+        echohl None
+    endif
+endfunction
+
+autocmd VimEnter * call CheckRequiredTools()
+
+" ============================================================================
+" 21. 配置完整性检查
+" ============================================================================
+
+" 配置完整性检查
+function! HealthCheck()
+    let issues = []
+    
+    " 检查目录权限
+    for dir in ['~/.vim/backup', '~/.vim/swap', '~/.vim/undo']
+        if !isdirectory(expand(dir))
+            call add(issues, '目录不存在: ' . dir)
+        elseif filewritable(expand(dir)) != 2
+            call add(issues, '目录不可写: ' . dir)
+        endif
+    endfor
+    
+    " 检查插件
+    if !exists(':PlugInstall')
+        call add(issues, 'vim-plug 未正确安装')
+    endif
+    
+    if len(issues) > 0
+        echohl ErrorMsg
+        echo "配置问题："
+        for issue in issues
+            echo "  • " . issue
+        endfor
+        echohl None
+    else
+        echohl MoreMsg
+        echo "✓ 配置检查通过"
+        echohl None
+    endif
+endfunction
+
+command! HealthCheck call HealthCheck()
+
+" ============================================================================
+" 22. 自定义命令
 " ============================================================================
 
 " 重新加载配置
@@ -515,7 +607,7 @@ command! ReloadConfig source ~/.vimrc | echo "Configuration reloaded!"
 command! FileInfo echo expand('%:p') . ' (' . &filetype . ')'
 
 " ============================================================================
-" 22. 启动时自动执行
+" 23. 启动时自动执行
 " ============================================================================
 
 " 启动时检查并设置项目根目录

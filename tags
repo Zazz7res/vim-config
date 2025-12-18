@@ -9,14 +9,10 @@
 !_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
 !_TAG_PROGRAM_URL	https://ctags.io/	/official site/
 !_TAG_PROGRAM_VERSION	5.9.0	//
-<C-h>	vimrc_v5.vim	/^nnoremap <C-h> <C-w>h$/;"	m
-<C-j>	vimrc_v5.vim	/^nnoremap <C-j> <C-w>j$/;"	m
-<C-k>	vimrc_v5.vim	/^nnoremap <C-k> <C-w>k$/;"	m
 <C-l>	vimrc_comfortable_v2.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
 <C-l>	vimrc_v3.1.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
 <C-l>	vimrc_v3.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
 <C-l>	vimrc_v4.vim	/^inoremap <silent><expr> <C-l> coc#refresh()$/;"	m
-<C-l>	vimrc_v5.vim	/^nnoremap <C-l> <C-w>l$/;"	m
 <C-n>	vimrc_comfortable_v1.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
 <C-n>	vimrc_comfortable_v2.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
 <C-n>	vimrc_v3.1.vim	/^nnoremap <C-n> :NERDTreeToggle<CR>  " Ctrl+n 快速开关$/;"	m
@@ -35,6 +31,10 @@
 <C-s>	vimrc_v5.vim	/^inoremap <silent> <C-s> <C-o>:w<CR>$/;"	m
 <C-s>	vimrc_v5.vim	/^nnoremap <silent> <C-s> :w<CR>$/;"	m
 <M-down>	vimrc_v5.vim	/^nnoremap <M-down> :resize +5<CR>$/;"	m
+<M-h>	vimrc_v5.vim	/^nnoremap <M-h> <C-w>h$/;"	m
+<M-j>	vimrc_v5.vim	/^nnoremap <M-j> <C-w>j$/;"	m
+<M-k>	vimrc_v5.vim	/^nnoremap <M-k> <C-w>k$/;"	m
+<M-l>	vimrc_v5.vim	/^nnoremap <M-l> <C-w>l$/;"	m
 <M-left>	vimrc_v5.vim	/^nnoremap <M-left> :vertical resize -5<CR>$/;"	m
 <M-right>	vimrc_v5.vim	/^nnoremap <M-right> :vertical resize +5<CR>$/;"	m
 <M-up>	vimrc_v5.vim	/^nnoremap <M-up> :resize -5<CR>$/;"	m
@@ -72,6 +72,8 @@
 <leader><space>	vimrc_v3.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
 <leader><space>	vimrc_v4.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
 <leader><space>	vimrc_v5.vim	/^nnoremap <silent> <leader><space> :nohlsearch<CR>$/;"	m
+<leader>=	vimrc_v5.vim	/^nmap <leader>= :call SmartFormat()<CR>$/;"	m
+<leader>=	vimrc_v5.vim	/^xmap <leader>= :call SmartFormat()<CR>$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^nmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>a	vimrc_comfortable_v1.vim	/^xmap <leader>a  <Plug>(coc-codeaction-selected)$/;"	m
 <leader>b	vimrc_v5.vim	/^nnoremap <leader>b :Buffers<CR>$/;"	m
@@ -94,8 +96,6 @@
 <leader>ds	vimrc_v4.vim	/^nnoremap <leader>ds :DeleteSwap<CR>$/;"	m
 <leader>ds	vimrc_v5.vim	/^nnoremap <leader>ds :DeleteSwap<CR>$/;"	m
 <leader>f	vimrc_comfortable_v1.vim	/^nmap <leader>f :Format<CR>$/;"	m
-<leader>f	vimrc_v5.vim	/^nmap <leader>f <Plug>(coc-format-selected)$/;"	m
-<leader>f	vimrc_v5.vim	/^xmap <leader>f <Plug>(coc-format-selected)$/;"	m
 <leader>l	vimrc_v5.vim	/^nnoremap <leader>l :Lines<CR>$/;"	m
 <leader>pr	vimrc_v5.vim	/^nnoremap <leader>pr :call SetProjectRoot()<CR>$/;"	m
 <leader>q	vimrc_comfortable_v2.vim	/^nnoremap <leader>q :q<CR>$/;"	m
@@ -158,6 +158,7 @@ NoAutoComment	vimrc_v5.vim	/^augroup NoAutoComment$/;"	a
 QuickfixToggle	vimrc_v5.vim	/^function! QuickfixToggle()$/;"	f
 ReloadConfig	vimrc_v5.vim	/^command! ReloadConfig source ~\/.vimrc | echo "Configuration reloaded!"$/;"	c
 SetProjectRoot	vimrc_v5.vim	/^function! SetProjectRoot()$/;"	f
+SmartFormat	vimrc_v5.vim	/^function! SmartFormat()$/;"	f
 [Q	vimrc_v5.vim	/^nnoremap [Q :cfirst<CR>$/;"	m
 [d	vimrc_comfortable_v1.vim	/^nmap <silent> [d <Plug>(coc-diagnostic-prev)$/;"	m
 [q	vimrc_v5.vim	/^nnoremap [q :cprev<CR>$/;"	m
@@ -175,6 +176,7 @@ c_cpp_settings	vimrc_v3.1.vim	/^augroup c_cpp_settings$/;"	a
 c_cpp_settings	vimrc_v3.vim	/^augroup c_cpp_settings$/;"	a
 c_cpp_settings	vimrc_v4.vim	/^augroup c_cpp_settings$/;"	a
 c_cpp_settings	vimrc_v5.vim	/^augroup c_cpp_settings$/;"	a
+c_formatting	vimrc_v5.vim	/^augroup c_formatting$/;"	a
 g:AutoPairs	vimrc_v5.vim	/^let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"', '`':'`'}$/;"	v
 g:NERDCommentEmptyLines	vimrc_comfortable_v2.vim	/^let g:NERDCommentEmptyLines = 1      " 注释空行$/;"	v
 g:NERDCommentEmptyLines	vimrc_v3.1.vim	/^let g:NERDCommentEmptyLines = 1      " 注释空行$/;"	v
@@ -222,19 +224,19 @@ g:UltiSnipsEnableSnipMate	vimrc_v5.vim	/^let g:UltiSnipsEnableSnipMate = 0      
 g:UltiSnipsExpandTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
 g:UltiSnipsExpandTrigger	vimrc_v3.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
 g:UltiSnipsExpandTrigger	vimrc_v4.vim	/^let g:UltiSnipsExpandTrigger = '<tab>'           " 手动触发：输入片段关键词后按 Ta/;"	v
-g:UltiSnipsExpandTrigger	vimrc_v5.vim	/^let g:UltiSnipsExpandTrigger = '<c-j>'         " Ctrl+J 展开片段$/;"	v
+g:UltiSnipsExpandTrigger	vimrc_v5.vim	/^let g:UltiSnipsExpandTrigger = '<Tab>'         " Tab 展开片段$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpBackwardTrigger	vimrc_v4.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'     " 手动跳转：Ctrl+k 跳回上一个占位符$/;"	v
-g:UltiSnipsJumpBackwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<c-k>'   " Ctrl+K 跳回上一个占位符$/;"	v
+g:UltiSnipsJumpBackwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>' " Shift+Tab 跳回上一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v3.1.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v3.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
 g:UltiSnipsJumpForwardTrigger	vimrc_v4.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'      " 手动跳转：Ctrl+j 跳到下一个占位符$/;"	v
-g:UltiSnipsJumpForwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpForwardTrigger = '<c-j>'    " Ctrl+J 跳到下一个占位符$/;"	v
+g:UltiSnipsJumpForwardTrigger	vimrc_v5.vim	/^let g:UltiSnipsJumpForwardTrigger = '<Tab>'    " Tab 跳到下一个占位符$/;"	v
 g:UltiSnipsListSnippets	vimrc_v3.1.vim	/^let g:UltiSnipsListSnippets = '<c-b>'            " 手动列出：Ctrl+b 显示所有可用片段$/;"	v
 g:UltiSnipsListSnippets	vimrc_v3.vim	/^let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段$/;"	v
 g:UltiSnipsListSnippets	vimrc_v4.vim	/^let g:UltiSnipsListSnippets = '<c-l>'            " 手动列出：Ctrl+l 显示所有可用片段$/;"	v
-g:UltiSnipsListSnippets	vimrc_v5.vim	/^let g:UltiSnipsListSnippets = '<c-l>'          " Ctrl+L 列出所有片段$/;"	v
+g:UltiSnipsListSnippets	vimrc_v5.vim	/^let g:UltiSnipsListSnippets = '<C-l>'          " Ctrl+L 列出所有片段$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v3.1.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v3.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v
 g:UltiSnipsRemoveSelectModeMappings	vimrc_v4.vim	/^let g:UltiSnipsRemoveSelectModeMappings = 0      " 保持完全手动控制$/;"	v

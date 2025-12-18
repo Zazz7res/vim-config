@@ -1,41 +1,36 @@
-##好的，现在你已经把配置复制到 vimrc 了，接下来需要执行以下步骤：
+# ============================================
+# C 语言代码片段配置 - UltiSnips
+# ============================================
 
-## 🚀 **立即执行步骤**
+# [第一步：创建此文件]
+# 在终端执行以下命令创建目录和文件：
+# mkdir -p ~/.vim/UltiSnips
+# touch ~/.vim/UltiSnips/c.snippets
 
-### **第一步：安装插件**
-###  在 Vim 中执行：
-#`#######################################################``vm
-###:PlugInstall
-###```
-###这会自动安装所有插件，包括 UltiSnips。
+# [第二步：添加以下代码片段内容]
+# 将下面的片段定义复制到此文件中并保存
 
-### **第二步：创建代码片段目录和文件**
-###在终端中执行：
-###```bash
-# 创建片段目录
-###mkdir -p ~/.vim/UltiSnips
+# [第三步：测试方法]
+# 1. 打开一个 C 文件：vim test.c
+# 2. 进入插入模式：按 i
+# 3. 输入片段关键词（如 if）
+# 4. 按 Tab 键展开片段
+# 5. 使用 Ctrl+j 和 Ctrl+k 在占位符间跳转
 
-# 创建 C 语言片段文件
-###touch ~/.vim/UltiSnips/c.snippets
-###```
-
-### **第三步：添加基础代码片段**
-###编辑 `~/.vim/UltiSnips/c.snippets` 文件，添加以下内容：
-
-
-#######################################################这里开始
-# ========================================
-# C 语言代码片段 - 手动触发
-# ========================================
+# ============================================
+# 基础代码片段定义
+# ============================================
 
 # 基础花括号块 - 手动触发
+# 使用方法：输入 { 然后按 Tab
 snippet { "Manual brace block"
 {
 	$0
 }
 endsnippet
 
-# if 语句 - 手动触发  
+# if 语句 - 手动触发
+# 使用方法：输入 if 然后按 Tab
 snippet if "Manual if statement"
 if (${1:condition}) {
 	$0
@@ -43,6 +38,7 @@ if (${1:condition}) {
 endsnippet
 
 # while 循环 - 手动触发
+# 使用方法：输入 while 然后按 Tab
 snippet while "Manual while loop"
 while (${1:condition}) {
 	$0
@@ -50,6 +46,7 @@ while (${1:condition}) {
 endsnippet
 
 # for 循环 - 手动触发
+# 使用方法：输入 for 然后按 Tab
 snippet for "Manual for loop"
 for (${1:int i = 0}; ${2:i < N}; ${3:i++}) {
 	$0
@@ -57,6 +54,7 @@ for (${1:int i = 0}; ${2:i < N}; ${3:i++}) {
 endsnippet
 
 # 函数定义 - 手动触发
+# 使用方法：输入 fun 然后按 Tab
 snippet fun "Manual function"
 ${1:void} ${2:function_name}(${3:void}) {
 	$0
@@ -64,6 +62,7 @@ ${1:void} ${2:function_name}(${3:void}) {
 endsnippet
 
 # 主函数 - 手动触发
+# 使用方法：输入 main 然后按 Tab
 snippet main "Manual main function"
 int main(int argc, char *argv[]) {
 	$0
@@ -72,94 +71,42 @@ int main(int argc, char *argv[]) {
 endsnippet
 
 # 结构体定义 - 手动触发
+# 使用方法：输入 struct 然后按 Tab
 snippet struct "Manual struct definition"
 struct ${1:name} {
 	${0:/* data */}
 };
 endsnippet
-#######################################################这里结束
-## 🎯 **测试使用方法**
 
-### **测试 1：基础花括号**
-1. 打开一个 C 文件：`vim test.c`
-2. 进入插入模式：`i`
-3. 输入 `{` 
-4. **按 Tab 键**手动触发
-5. 应该变成：
-```c
-{
-    // 光标在这里
-}
-```
+# ============================================
+# 扩展片段（可选添加）
+# ============================================
 
-### **测试 2：if 语句**
-1. 在插入模式下输入 `if`
-2. **按 Tab 键**手动触发  
-3. 应该变成：
-```c
-if (condition) {
-    // 光标在 condition 位置
-}
-```
-4. 按 `Ctrl+j` 跳到代码体位置
+# include 语句
+# 使用方法：输入 inc 然后按 Tab
+snippet inc "Include statement"
+#include <${1:stdio}.h>
+$0
+endsnippet
 
-## 🔧 **故障排除**
+# printf 语句
+# 使用方法：输入 pf 然后按 Tab
+snippet pf "printf statement"
+printf("${1:%s}\\n", ${2:message});
+$0
+endsnippet
 
-### **如果 Tab 键不工作：**
-检查插件是否安装成功：
-```vim
-:PlugStatus
-```
+# scanf 语句
+# 使用方法：输入 sf 然后按 Tab
+snippet sf "scanf statement"
+scanf("${1:%s}", ${2:&variable});
+$0
+endsnippet
 
-### **如果提示 UltiSnips 未安装：**
-重新安装插件：
-```vim
-:PlugInstall
-```
-
-### **重新加载配置：**
-```vim
-:source ~/.vimrc
-```
-
-## 📝 **快速参考卡片**
-
-**手动触发流程：**
-```
-输入关键词 → 按 Tab → 片段展开 → Ctrl+j/k 导航
-```
-
-**可用片段关键词：**
-- `{` - 基础花括号块
-- `if` - if 语句  
-- `while` - while 循环
-- `for` - for 循环
-- `fun` - 函数定义
-- `main` - 主函数
-- `struct` - 结构体定义
-
-**导航快捷键：**
-- `Tab` - 手动触发展开片段
-- `Ctrl+j` - 跳到下一个占位符
-- `Ctrl+k` - 跳回上一个占位符
-- `Ctrl+l` - 列出所有可用片段
-
-## 🎉 **完成验证**
-
-执行完以上步骤后，打开一个 C 文件测试：
-
-```c
-// 测试步骤：
-1. 输入 'if' + Tab
-2. 输入条件 'a < b' 
-3. 按 Ctrl+j
-4. 输入代码 'printf("hello");'
-
-###touch// 最终结果：
-###if (a < b) {
-###    printf("hello");
-##3
-###}
-###```
-
-###如果这个流程能正常工作，说明配置成功了！现在你就可以享受手动控制的代码片段功能了。
+# ============================================
+# [第四步：保存文件后测试]
+# 1. 重启 Vim 或重新加载配置：:source ~/.vimrc
+# 2. 打开测试文件：vim test.c
+# 3. 按 i 进入插入模式，尝试输入 if 然后按 Tab
+# 4. 应该看到 if 语句被展开
+# ============================================
