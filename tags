@@ -113,6 +113,7 @@
 <leader>wq	vimrc_v4.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
 <leader>wq	vimrc_v5.vim	/^nnoremap <leader>wq :wq<CR>$/;"	m
 CheckBackSpace	vimrc_v5.vim	/^function! CheckBackSpace() abort$/;"	f
+CheckRequiredTools	vimrc_v5.vim	/^function! CheckRequiredTools()$/;"	f
 CleanOldSwapFiles	vimrc_v3.1.vim	/^function! CleanOldSwapFiles()$/;"	f
 CleanOldSwapFiles	vimrc_v4.vim	/^function! CleanOldSwapFiles()$/;"	f
 CleanOldSwapFiles	vimrc_v5.vim	/^function! CleanOldSwapFiles()$/;"	f
@@ -131,6 +132,8 @@ DeleteSwapFile	vimrc_v4.vim	/^function! DeleteSwapFile()$/;"	f
 DeleteSwapFile	vimrc_v5.vim	/^function! DeleteSwapFile()$/;"	f
 FileInfo	vimrc_v5.vim	/^command! FileInfo echo expand('%:p') . ' (' . &filetype . ')'$/;"	c
 Format	vimrc_comfortable_v1.vim	/^command! -nargs=0 Format :call CocAction('format')$/;"	c
+HealthCheck	vimrc_v5.vim	/^command! HealthCheck call HealthCheck()$/;"	c
+HealthCheck	vimrc_v5.vim	/^function! HealthCheck()$/;"	f
 K	vimrc_comfortable_v1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_comfortable_v2.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
 K	vimrc_v3.1.vim	/^nnoremap <silent> K :call <SID>show_documentation()<CR>$/;"	m
@@ -154,7 +157,6 @@ NoAutoComment	vimrc_comfortable_v2.vim	/^augroup NoAutoComment$/;"	a
 NoAutoComment	vimrc_v3.1.vim	/^augroup NoAutoComment$/;"	a
 NoAutoComment	vimrc_v3.vim	/^augroup NoAutoComment$/;"	a
 NoAutoComment	vimrc_v4.vim	/^augroup NoAutoComment$/;"	a
-NoAutoComment	vimrc_v5.vim	/^augroup NoAutoComment$/;"	a
 QuickfixToggle	vimrc_v5.vim	/^function! QuickfixToggle()$/;"	f
 ReloadConfig	vimrc_v5.vim	/^command! ReloadConfig source ~\/.vimrc | echo "Configuration reloaded!"$/;"	c
 SetProjectRoot	vimrc_v5.vim	/^function! SetProjectRoot()$/;"	f
@@ -271,6 +273,7 @@ g:gitgutter_sign_column_always	vimrc_v3.1.vim	/^let g:gitgutter_sign_column_alwa
 g:gitgutter_sign_column_always	vimrc_v3.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
 g:gitgutter_sign_column_always	vimrc_v4.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
 g:gitgutter_sign_column_always	vimrc_v5.vim	/^let g:gitgutter_sign_column_always = 1  " 始终显示符号列$/;"	v
+g:large_file_threshold	vimrc_v5.vim	/^let g:large_file_threshold = 5000000 " 5MB$/;"	v
 g:project_root	vimrc_v5.vim	/^        let g:project_root = fnamemodify(l:root, ':h')$/;"	v
 g:project_root	vimrc_v5.vim	/^        let g:project_root = getcwd()$/;"	v
 g:project_root	vimrc_v5.vim	/^let g:project_root = {}$/;"	v
@@ -300,6 +303,7 @@ gy	vimrc_v3.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 gy	vimrc_v4.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 gy	vimrc_v5.vim	/^nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
 large_file	vimrc_v5.vim	/^augroup large_file$/;"	a
+other_file_types	vimrc_v5.vim	/^augroup other_file_types$/;"	a
 s:check_back_space	vimrc_comfortable_v1.vim	/^function! s:check_back_space() abort$/;"	f
 s:check_coc_status	vimrc_comfortable_v2.vim	/^function! s:check_coc_status()$/;"	f
 s:check_coc_status	vimrc_v3.1.vim	/^function! s:check_coc_status()$/;"	f
