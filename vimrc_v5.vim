@@ -360,3 +360,15 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
   \| endif
+" ============================================================================
+" 9. C 语言专项配置 (修正版：移到最后以确保优先级)
+" ============================================================================
+" 移动到这里是为了覆盖插件可能产生的默认设置
+augroup c_cpp_settings
+    autocmd!
+    autocmd FileType c,cpp,h,hpp setlocal formatoptions-=croql
+    autocmd FileType c,cpp,h,hpp setlocal nosmartindent
+    " 保留 tabstop 等设置，防止插件覆盖
+    autocmd FileType c,cpp,h,hpp setlocal tabstop=4 shiftwidth=4 expandtab
+    autocmd FileType c,cpp,h,hpp nnoremap <buffer> <leader>f :ClangFormat<CR>
+augroup END
