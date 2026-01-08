@@ -77,7 +77,6 @@ call plug#begin('~/.vim/plugged')
 "---------------  3. Theme & UI ----------------
 " --- Theme & UI (Gruvbox - Vim 圈主流之王) ---
 Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -128,7 +127,7 @@ let g:gruvbox_termcolors=256
 
 " --- Airline Settings (集成 Gruvbox) ---
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline_skip_empty_sections = 1
