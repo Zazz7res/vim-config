@@ -11,6 +11,10 @@ set nocompatible
 filetype plugin indent on
 syntax on
 
+" ================
+let mapleader = ","
+let g:mapleader = ","
+
 " --- 编码 ---
 set encoding=utf-8
 set fileencoding=utf-8
@@ -182,7 +186,6 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<C
 " ----------------------------
 " 5. Key Mappings (高效键位)
 " ============================================================================
-let mapleader = ","
 
 " --- File Operations ---
 nmap <leader>w :w<CR>
