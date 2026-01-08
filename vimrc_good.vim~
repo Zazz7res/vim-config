@@ -1,4 +1,3 @@
-
 " ============================================================================
 " Vim Ultimate God Mode Configuration
 " Philosophy: Performance over Compatibility, Feature-Rich, IDE-like
@@ -32,7 +31,13 @@ set laststatus=2
 set mouse=a
 set selection=exclusive
 set selectmode=mouse,key
-set clipboard=unnamedplus
+
+" 👇 替换成安全的手动映射 (需要复制时才用)
+" 普通的 y/p 还是在 Vim 内部飞快，不碰系统剪贴板
+nnoremap <leader>y "+y
+xnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
+nnoremap <leader>p "+p
 
 " --- 编辑行为 (激进模式) ---
 set tabstop=4
