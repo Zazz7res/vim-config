@@ -261,3 +261,10 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
   \| endif
+" ----------------------------
+" 9. 禁止注释传染 (强迫症福音)
+" ============================================================================
+augroup c_cpp_settings
+    autocmd!
+    autocmd FileType c,cpp,h,hpp setlocal formatoptions-=croql
+augroup END
