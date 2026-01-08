@@ -85,7 +85,6 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'airblade/vim-gitgutter'
 
 " --- Completion & LSP (核心) ---
@@ -183,7 +182,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<C
 " ----------------------------
 " 5. Key Mappings (高效键位)
 " ============================================================================
-" let mapleader = ","
+let mapleader = ","
 
 " --- File Operations ---
 nmap <leader>w :w<CR>
