@@ -183,7 +183,7 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<C
 " ----------------------------
 " 5. Key Mappings (高效键位)
 " ============================================================================
-let mapleader = ","
+" let mapleader = ","
 
 " --- File Operations ---
 nmap <leader>w :w<CR>
