@@ -1,3 +1,4 @@
+vim ~/.vim/coc-settings.json
 有些插件不能装的，coc和UltiSnips会有冲突
 以下可装：
 1. translator
