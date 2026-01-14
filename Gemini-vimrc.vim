@@ -1,0 +1,222 @@
+" ============================================================================
+" Vim Ultimate God Mode Configuration (Refined)
+" Philosophy: Performance, IDE-like, No Conflicts
+" Author: AI Vim Expert
+" ============================================================================
+
+" ----------------------------
+" 1. Core Environment
+" ----------------------------
+set nocompatible
+filetype plugin indent on
+syntax on
+let mapleader = ","
+let g:mapleader = ","
+
+" --- Encoding ---
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+
+" --- UI Settings ---
+set number
+set relativenumber
+set cursorline
+set cursorcolumn
+set showcmd
+set showmatch
+set matchtime=1
+set ruler
+set laststatus=2
+set termguicolors " 开启真彩色支持
+
+" --- Mouse & Clipboard ---
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+" Manual copy/paste mappings (System Clipboard)
+nnoremap <leader>y "+y
+xnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
+nnoremap <leader>p "+p
+
+" --- Editing Behavior ---
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+set autoindent
+set smartindent
+set cindent
+set wrap
+set linebreak
+
+" --- Search ---
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" --- Performance ---
+set lazyredraw
+set ttyfast
+set updatetime=300      " 300ms is standard for Coc; 100ms is too risky for disk IO
+set timeoutlen=500
+set shortmess+=c        " Don't pass messages to |ins-completion-menu|
+
+" --- Backup/Undo ---
+set hidden
+set backspace=indent,eol,start
+set history=1000
+set nobackup
+set nowritebackup
+set undofile
+set swapfile
+if !isdirectory($HOME."/.vim/undodir")
+    call mkdir($HOME."/.vim/undodir", "p", 0700)
+endif
+set undodir=~/.vim/undodir
+
+" ----------------------------
+" 2. Plugin Management
+" ----------------------------
+call plug#begin('~/.vim/plugged')
+
+" --- Theme & UI ---
+Plug 'morhetz/gruvbox'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'preservim/nerdtree'
+Plug 'airblade/vim-gitgutter'
+Plug 'ryanoasis/vim-devicons' " 图标支持
+
+" --- Coc.nvim (The Core) ---
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" --- Snippets Data (No Engine, just data) ---
+Plug 'honza/vim-snippets'
+
+" --- Editing ---
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/vim-easy-align'
+
+" --- Navigation ---
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'majutsushi/tagbar'
+
+" --- Git ---
+Plug 'tpope/vim-fugitive'
+
+call plug#end()
+
+" --- Coc Extensions to Auto-Install ---
+let g:coc_global_extensions = [
+    \ 'coc-clangd',
+    \ 'coc-snippets',
+    \ 'coc-git',
+    \ 'coc-explorer',
+    \ 'coc-lists',
+    \ 'coc-highlight',
+    \ 'coc-translator',
+    \ 'coc-json',
+    \ 'coc-vimlsp',
+    \ 'coc-marketplace'
+    \ ]
+
+" ----------------------------
+" 3. Theme & UI Config
+" ----------------------------
+set background=dark
+try
+    colorscheme gruvbox
+catch
+    colorscheme default
+endtry
+let g:gruvbox_contrast_dark='hard'
+
+" Airline
+let g:airline_theme='gruvbox'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" ----------------------------
+" 4. Coc.nvim & Snippet Logic (CRITICAL)
+" ----------------------------
+
+" Function to check if backspace is needed
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" === Super Tab Config ===
+" 1. If menu visible -> Select next item
+" 2. If snippet jumpable -> Jump to next placeholder
+" 3. If text exists -> Trigger completion
+" 4. Else -> Insert TAB
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ coc#snippet#jumpable() ? coc#snippet#next() :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : coc#snippet#prev()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" --- Coc Diagnostics Navigation ---
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" --- Go to Definition ---
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" --- Documentation (K) ---
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" --- Rename & Format ---
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" --- Explorer (Replacing NERDTree) ---
+nmap <leader>e :CocCommand explorer<CR>
+
+" ----------------------------
+" 5. Other Key Mappings
+" ----------------------------
+" File
+nmap <leader>w :w<CR>
+nmap <leader>q :q<CR>
+" Search Clear
+nnoremap <leader><space> :nohlsearch<CR>
+" FZF
+nnoremap <C-p> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+" Tagbar
+nnoremap <leader>t :Tags<CR>
+
+" ----------------------------
+" 6. Auto Commands
+" ----------------------------
+" Highlight symbol under cursor
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Auto install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
