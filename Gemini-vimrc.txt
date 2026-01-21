@@ -127,6 +127,9 @@ let g:coc_global_extensions = [
     \ ]
 
 " ----------------------------
+" 下载字体  下载地址：https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
+" 字体管理器  sudo apt install font-manager
+" 终端也要设置使用JetBrainsMono.zip
 " 3. Theme & UI Config
 " ----------------------------
 set background=dark
@@ -139,9 +142,20 @@ let g:gruvbox_contrast_dark='hard'
 
 " Airline
 let g:airline_theme='gruvbox'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1         " ✅ 已正确设为1
 let g:airline#extensions#tabline#enabled = 1
 
+" ----------------------------
+" GUI专用设置 (GVim)           <-- ✅ 这是你需要添加的块
+" ----------------------------
+if has('gui_running')
+    set guifont=JetBrainsMono\ Nerd\ Font\ Ultra-Bold:h13
+    set guioptions-=T
+    set guioptions-=m
+    set guioptions-=r
+    set guioptions-=L
+    set guioptions+=c
+endif
 " ----------------------------
 " 4. Coc.nvim & Snippet Logic (CRITICAL)
 " ----------------------------
