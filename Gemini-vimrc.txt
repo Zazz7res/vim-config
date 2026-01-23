@@ -60,7 +60,7 @@ set smartcase
 " --- Performance ---
 set lazyredraw
 set ttyfast
-set updatetime=300      " 300ms is standard for Coc; 100ms is too risky for disk IO
+set updatetime=1000      " 300ms is standard for Coc; 100ms is too risky for disk IO
 set timeoutlen=500
 set shortmess+=c        " Don't pass messages to |ins-completion-menu|
 
