@@ -111,9 +111,15 @@ Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
+" 在 ~/.vimrc 中，call plug#end() 之后添加：
+let g:coc_snippets_dir = '/home/mini-harry/.vim/snippets'  " 用绝对路径
+" ========== 用户优化配置（放在 call plug#end() 之后） ==========
+" 1. 精准修复注释换行问题（仅移除回车续注释，保留 o 键智能缩进）
+autocmd FileType c,cpp setlocal formatoptions-=r
 
-" --- 这个取消连续 \\ 注释
-autocmd FileType c,cpp setlocal formatoptions-=r   
+" 2. 快速注释快捷键（,c = 注释/取消注释）
+nmap <leader>c gcc
+vmap <leader>c gc
 
 " --- Coc Extensions to Auto-Install ---
 let g:coc_global_extensions = [
@@ -130,9 +136,7 @@ let g:coc_global_extensions = [
     \ ]
 
 " ----------------------------
-" 下载字体  下载地址：https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.zip
-" 字体管理器  sudo apt install font-manager
-" 终端也要设置使用JetBrainsMono.zip
+
 " 3. Theme & UI Config
 " ----------------------------
 set background=dark
@@ -215,11 +219,6 @@ nmap <leader>e :CocCommand explorer<CR>
 " 5. Other Key Mappings
 " ----------------------------
 " File
-
-" 快速注释（,c = 注释当前行，可视模式下注释选中区域）
-nmap <leader>c gcc   " 普通模式：,c 等价于 gcc
-vmap <leader>c gc    " 可视模式：,c 等价于 gc
-
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
 " Search Clear
