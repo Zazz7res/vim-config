@@ -215,13 +215,21 @@ nmap <leader>e :CocCommand explorer<CR>
 " 5. Other Key Mappings
 " ----------------------------
 " File
-
-" 快速注释（,c = 注释当前行，可视模式下注释选中区域）
-nmap <leader>c gcc   " 普通模式：,c 等价于 gcc
-vmap <leader>c gc    " 可视模式：,c 等价于 gc
-
 nmap <leader>w :w<CR>
 nmap <leader>q :q<CR>
+
+" --- Comment Mappings ---
+" 行首注释（整行注释）
+nmap <leader>c gcc   " 普通模式：,c = 注释当前行
+vmap <leader>c gc    " 可视模式：,c = 注释选中区域
+
+" 行尾注释（在行末添加 // ）
+nnoremap <leader>e A // <Esc>        " 普通模式：,e = 当前行末尾添加注释
+vnoremap <leader>e :normal A // <CR> " 可视模式：,e = 选中行末尾添加注释
+
+" 快速跳到行尾注释位置（,<Space> = 跳到 // 后面）
+nnoremap <leader>= $F/a 
+
 " Search Clear
 nnoremap <leader><space> :nohlsearch<CR>
 " FZF
@@ -229,7 +237,6 @@ nnoremap <C-p> :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 " Tagbar
 nnoremap <leader>t :Tags<CR>
-
 " ----------------------------
 " 6. Auto Commands
 " ----------------------------
