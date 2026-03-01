@@ -83,7 +83,6 @@ set undodir=~/.vim/undodir
 call plug#begin('~/.vim/plugged')
 
 " --- Theme & UI ---
-Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdtree'
@@ -137,14 +136,14 @@ let g:coc_global_extensions = [
 " ----------------------------
 set background=dark
 try
-    colorscheme gruvbox
+    colorscheme desert
 catch
     colorscheme default
 endtry
-let g:gruvbox_contrast_dark='hard'
+
 
 " Airline
-let g:airline_theme='gruvbox'
+let g:airline_theme='default'
 let g:airline_powerline_fonts = 1         " ✅ 已正确设为1
 let g:airline#extensions#tabline#enabled = 1
 
