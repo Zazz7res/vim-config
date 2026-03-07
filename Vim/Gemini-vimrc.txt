@@ -103,7 +103,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 
 " 高效编辑
-Plug 'tpope/vim-surround'     " 光速修改引号/括号 (如 cs"')
+Plug 'tpope/vim-surround'     " 光速修改引号/括号 (如 cs"
 Plug 'tpope/vim-commentary'   " 注释神器 (gcc)
 Plug 'junegunn/vim-easy-align'" 代码快速对齐
 
