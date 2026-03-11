@@ -1,0 +1,24 @@
+# 编译产物
+build/
+# 运行时文件
+installation.yaml
+user.yaml
+sync/
+# 用户词库（本地积累，不同步）
+rime_ice.userdb/
+# 雾凇本体（install.sh 会重新 clone）
+cn_dicts/
+en_dicts/
+lua/
+opencc/
+others/
+*.schema.yaml
+*.dict.yaml
+*.yaml
+!*.custom.yaml
+custom_phrase.txt
+go.work
+LICENSE
+README.md
+squirrel.yaml
+weasel.yaml
