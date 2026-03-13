@@ -16,7 +16,6 @@ others/
 *.dict.yaml
 *.yaml
 !*.custom.yaml
-custom_phrase.txt
 go.work
 LICENSE
 README.md
