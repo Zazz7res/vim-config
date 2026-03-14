@@ -97,7 +97,9 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons' 
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'ghifarit53/tokyonight-vim'
+
+
 
 " 核心引擎
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -119,8 +121,8 @@ call plug#end()
 
 " --- Airline 设置 ---
 set background=dark
-colorscheme catppuccin_mocha
-let g:airline_theme='catppuccin_mocha'
+colorscheme tokyonight
+let g:airline_theme='tokyonight'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_highlighting_cache = 1
@@ -259,21 +261,30 @@ function! MyTabLine()
 endfunction
 
 function! SetTabColors()
-  " 深玫瑰  —— 深底 + 亮玫瑰字
-  hi TabColor1 guibg=#4A2540 guifg=#F38BA8 gui=bold
-  " 琥珀金  —— 深底 + 暖金字
-  hi TabColor2 guibg=#3D3218 guifg=#F9E2AF gui=bold
-  " 翡翠绿  —— 深底 + 清绿字
-  hi TabColor3 guibg=#1B3A2F guifg=#A6E3A1 gui=bold
-  " 深海蓝  —— 深底 + 冰蓝字
-  hi TabColor4 guibg=#1A2D4A guifg=#89B4FA gui=bold
-  " 暗紫    —— 深底 + 薰衣草字
-  hi TabColor5 guibg=#2C1F4A guifg=#CBA6F7 gui=bold
-  " 当前激活：亮底深字，突出显示
-  hi TabLineSel  guibg=#CDD6F4 guifg=#1E1E2E gui=bold
-  " 空白填充区
-  hi TabLineFill guibg=#181825 guifg=#181825
+  " 极光冰青
+  hi TabColor1 guibg=#001A20 guifg=#00E5FF gui=bold
+  " 樱花粉
+  hi TabColor2 guibg=#1A0018 guifg=#FF87C3 gui=bold
+  " 柠黄
+  hi TabColor3 guibg=#141200 guifg=#F5E642 gui=bold
+  " 薄荷青绿
+  hi TabColor4 guibg=#001A12 guifg=#00F5C8 gui=bold
+  " 极光深青
+  hi TabColor5 guibg=#001520 guifg=#38D9F5 gui=bold
+  " 玫瑰粉
+  hi TabColor6 guibg=#1A0012 guifg=#FF5FA3 gui=bold
+  " 香槟黄
+  hi TabColor7 guibg=#181400 guifg=#FFD060 gui=bold
+  " 碧绿
+  hi TabColor8 guibg=#001510 guifg=#00E8A8 gui=bold
+  " 淡青紫（唯一一个微微带紫，过渡用）
+  hi TabColor9 guibg=#0A0A1A guifg=#82CFFF gui=bold
+  " 当前激活
+  hi TabLineSel  guibg=#00B4D8 guifg=#0D0E14 gui=bold
+  " 填充区
+  hi TabLineFill guibg=#0D0E14 guifg=#0D0E14
 endfunction
+
 
 call SetTabColors()
 autocmd ColorScheme * call SetTabColors()
